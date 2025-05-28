@@ -1,14 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '../components/layout/MainAppLayout';
+import PageHeader from '../components/Dashboard/PageHeader';
+import StatsSummary from '../components/Dashboard/StatsSummary';
+import LeadsTracking from '../components/Dashboard/LeadsTracking';
+import ReasonsAndStatsGrid from '../components/Dashboard/ReasonsAndStatsGrid';
 
-const Index = () => {
+// This page corresponds to the "DashboardPage" in the component hierarchy.
+// It assembles various dashboard-specific organisms within the AdminLayout (provided by MainAppLayout).
+const DashboardPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <MainAppLayout title="Leads Dashboard" activeSidebarItem="dashboard">
+      {/* PageHeader: Visual separation for top section. Contains tabs 'Sales' and 'Leads'. */}
+      <PageHeader />
+      
+      {/* StatsSummary: First section of dashboard. Contains funnel stats and sources breakdown. */}
+      <StatsSummary />
+      
+      {/* LeadsTracking: Section with line chart visualizing closed/won leads over time. */}
+      <LeadsTracking />
+      
+      {/* ReasonsAndStatsGrid: Grid displaying reasons for lost leads and general stats. */}
+      <ReasonsAndStatsGrid />
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default DashboardPage;
